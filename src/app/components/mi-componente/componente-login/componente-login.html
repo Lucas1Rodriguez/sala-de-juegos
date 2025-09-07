@@ -1,13 +1,18 @@
 <div class="login">
-    <label>Email</label>
+    <label>Correo</label>
     <br>
-    <input [(ngModel)]="email" type="email">
+    <input [(ngModel)]="correo" type="text">
     <br><br>
 
-    <label position="floating">Contraseña</label>
+    <label>Contraseña</label>
     <br>
+
     <input [(ngModel)]="contrasena" type="password">
     <br><br>
 
-    <button routerLink="/home">Ingresar</button>
+    <button (click)="login()">Ingresar</button>
+    <br><br>
+
+    <button (click)="harcodeoCorreo()">Usuario de prueba</button>
+
   </div>

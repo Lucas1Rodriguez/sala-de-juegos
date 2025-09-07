@@ -1,10 +1,14 @@
 .navbar {
     background-color: rgb(35, 223, 223);
-    padding: 15px;
+    padding: 20px;
 
     a {
-        color: gold;
+        color: blue;
         margin: 15px;
         padding: 20px;
+    }
+    a:hover{
+        color: gold;
+        background-color: black;
     }
 }
