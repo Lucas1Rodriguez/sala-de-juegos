@@ -5,8 +5,9 @@ import { RouterLink } from '@angular/router';
   selector: 'app-componente-menu',
   imports: [RouterLink],
   templateUrl: './componente-menu.html',
-  styleUrl: './componente-menu.css'
+  styleUrls: ['./componente-menu.css']
 })
 export class ComponenteMenu {
+
 
 }
