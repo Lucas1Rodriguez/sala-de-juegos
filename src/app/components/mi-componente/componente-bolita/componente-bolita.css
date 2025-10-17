@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+.bolita-container {
+  text-align: center;
+  margin-top: 150px;
+}
+
+h2,p{
+  color: lightblue;
+  font-weight: bold;
+  height: 40px;
+  font-family: 'Press Start 2P', system-ui;
+}
+
+button{
+  font-family: 'Press Start 2P', system-ui;
+  font-weight: bold;
+  background: #FACC15;
+  color: #0B1C4C;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cartas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 130px;
+  margin-top: 20px;
+}
+
+.carta {
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.carta:hover {
+  transform: scale(1.1);
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.menu-inicio button {
+  margin: 10px;
+}
+
+.cartaVuelta{
+  height: 325px;
+  width: 235px;
+}

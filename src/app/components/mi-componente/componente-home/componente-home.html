@@ -1,1 +1,16 @@
-<p>HOME</p>
+<div class="home" *ngIf="usuario != null; else noUser">
+  <h2>Bienvenido {{ nombreUsuario || usuario.email }}</h2>
+
+  <h3>Juegos y chat</h3>
+  <div class="botones"> 
+    <button (click)="juegoAhorcado()">Ahorcado</button>
+    <button (click)="juegoBolita()">Bolita</button>
+    <button (click)="juegoMayorMenor()">Mayor o Menor</button>
+    <button (click)="chat()">Chat</button>
+  </div>
+
+</div>
+
+<ng-template #noUser>
+  <h1>No hay usuario logueado.</h1>
+</ng-template>

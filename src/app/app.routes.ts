@@ -3,6 +3,10 @@ import { ComponenteHome } from './components/mi-componente/componente-home/compo
 import { ComponenteLogin } from './components/mi-componente/componente-login/componente-login';
 import { ComponenteQuienSoy } from './components/mi-componente/componente-quien-soy/componente-quien-soy';
 import { ComponenteRegistrar } from './components/mi-componente/componente-registrar/componente-registrar';
+import { ComponenteAhorcado } from './components/mi-componente/componente-ahorcado/componente-ahorcado';
+import { ComponenteChat } from './components/mi-componente/componente-chat/componente-chat';
+import { ComponenteBolita } from './components/mi-componente/componente-bolita/componente-bolita';
+import { ComponenteMayorMenor } from './components/mi-componente/componente-mayor-menor/componente-mayor-menor';
 
 export const routes: Routes = [
 
@@ -28,9 +32,24 @@ export const routes: Routes = [
         component: ComponenteRegistrar
     },
     {
+        path: "ahorcado",
+        component: ComponenteAhorcado
+    },
+    {
+        path: "bolita",
+        component: ComponenteBolita
+    },
+    {
+        path: "mayorMenor",
+        component: ComponenteMayorMenor
+    },
+    {
+        path: "chat",
+        component: ComponenteChat
+    },
+    {
         path: "**",
         component: ComponenteHome
     }
-
 
 ];

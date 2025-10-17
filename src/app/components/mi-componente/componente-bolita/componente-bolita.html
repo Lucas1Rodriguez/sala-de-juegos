@@ -1,0 +1,33 @@
+<div class="bolita-container">
+  <h2>👑 Encontrá al Rey</h2>
+  <p>Vidas: ❤️ x{{ vidas }} | Puntos: {{ puntos }}</p>
+
+  <div *ngIf="!jugando" class="menu-inicio">
+    <button (click)="iniciarJuego()">Jugar</button>
+  </div>
+
+  <div *ngIf="jugando">
+    <p>{{ mensaje }}</p>
+
+    <div class="cartas">
+      <div
+        *ngFor="let carta of cartas; let i = index"
+        class="carta"
+        (click)="elegirCarta(i)"
+        [class.disabled]="eleccion !== null || animando"
+      >
+        <img
+          *ngIf="!mostrarCartas"
+          class="cartaVuelta"
+          src="./assets/cartaVuelta.png"
+          alt="Carta tapada"
+        />
+        <img
+          *ngIf="mostrarCartas"
+          [src]="'https://deckofcardsapi.com/static/img/' + carta.nombre + carta.palo[0].toUpperCase() + '.png'"
+          alt="{{ carta.nombre }} de {{ carta.palo }}"
+        />
+      </div>
+    </div>
+  </div>
+</div>

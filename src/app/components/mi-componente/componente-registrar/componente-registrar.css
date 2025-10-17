@@ -1,36 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+
+
 .wrapper {
-    height: 80vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .registrar {
-    background-color: rgb(34, 184, 184);
+    background-color: #1E3A8A;
     padding: 30px;
     width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 10px #F472B6;
 }
 
 label {
+    font-family: 'Coiny', system-ui;
+    font-size: 20px;
     display: block;
     font-weight: bold;
-    color: #333;
+    color: #E2E8F0;
 }
 
 button {
+    font-family: 'Press Start 2P', system-ui;
     font-weight: bold;
     width: 105%;
-    background: #156088;
-    color: lightsalmon;
+    background: #FACC15;
+    color: #0B1C4C;
     padding: 10px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+
+button:hover {
+    background: #EAB308;
 }
 
 input{

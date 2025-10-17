@@ -1,0 +1,29 @@
+<div class="mayor-menor-container">
+  <h2>🃏 Juego: Mayor o Menor</h2>
+
+  <div *ngIf="!jugando" class="inicio">
+    <button (click)="iniciarJuego()">Jugar</button>
+  </div>
+
+  <div *ngIf="jugando">
+    <p>Vidas: ❤️ x{{ vidas }} | Puntos: {{ puntos }}</p>
+    <p>{{ mensaje }}</p>
+
+    <div class="cartas">
+      <div class="carta">
+        <p>Carta actual:</p>
+        <img
+          [src]="'https://deckofcardsapi.com/static/img/' + cartaActual.valor + cartaActual.palo[0].toUpperCase() + '.png'"
+          alt="Carta actual"
+        />
+      </div>
+    </div>
+
+    <div class="botones">
+      <button (click)="jugar('mayor')">Mayor 🔼</button>
+      <button (click)="jugar('menor')">Menor 🔽</button>
+    </div>
+
+    <p *ngIf="mazo.length">🂠 Cartas restantes: {{ mazo.length }}</p>
+  </div>
+</div>

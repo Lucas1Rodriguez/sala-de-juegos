@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+
 .navbar {
-    background-color: rgb(35, 223, 223);
+    font-family: 'Coiny', system-ui;
+    background-color: #1E3A8A;
     padding: 20px;
 
     a {
-        color: mediumblue;
+        color: lightcoral;
         margin: 15px;
         padding: 20px;
     }

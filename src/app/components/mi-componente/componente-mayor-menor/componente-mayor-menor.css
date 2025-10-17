@@ -1,0 +1,36 @@
+.mayor-menor-container {
+  text-align: center;
+  margin-top: 150px;
+}
+
+h2,p{
+  color: lightblue;
+  font-weight: bold;
+  height: 40px;
+  font-family: 'Press Start 2P', system-ui;
+}
+
+button{
+  font-family: 'Press Start 2P', system-ui;
+  font-weight: bold;
+  background: #FACC15;
+  color: #0B1C4C;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cartas {
+  margin-top: 20px;
+}
+
+.carta img {
+  width: 120px;
+}
+
+.botones button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
