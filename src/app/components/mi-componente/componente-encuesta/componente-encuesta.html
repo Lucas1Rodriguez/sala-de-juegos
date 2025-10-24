@@ -1,0 +1,52 @@
+<div class="form-container">
+  <h2>Encuesta</h2>
+
+  <form [formGroup]="encuestaForm" (ngSubmit)="enviar()">
+
+    <div class="campo">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" placeholder="Nombre">
+    </div>
+
+    <div class="campo">
+      <label>Apellido</label>
+      <input type="text" formControlName="apellido" placeholder="Apellido">
+    </div>
+
+    <div class="campo">
+      <label>Edad</label>
+      <input type="number" formControlName="edad" placeholder="Edad">
+    </div>
+
+    <div class="campo">
+      <label>Número de telefono</label>
+      <input type="number" formControlName="telefono" placeholder="Número de telefono">
+    </div>
+
+    <div class="campo">
+      <label><strong>¿Cuál fue la dificultad de los juegos?</strong></label>
+      <div class="radio-group">
+        <label><input type="radio" formControlName="dificultad" value="facil"> Facil</label>
+        <label><input type="radio" formControlName="dificultad" value="medio"> Medio</label>
+        <label><input type="radio" formControlName="dificultad" value="dificil"> Dificil</label>
+      </div>
+    </div>
+
+    <div class="campo" formGroupName="favorito">
+      <label><strong>¿Cuál fue/fueron tu/s juego/s favorito/s?</strong></label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" formControlName="ahorcado"> Ahorcado</label>
+        <label><input type="checkbox" formControlName="mayorMenor"> Mayor o menor</label>
+        <label><input type="checkbox" formControlName="bolita"> Bolita</label>
+        <label><input type="checkbox" formControlName="preguntados"> Preguntados</label>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Comentario</label>
+      <textarea rows="4" formControlName="comentario" placeholder="Escribí tu opinión..."></textarea>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</div>

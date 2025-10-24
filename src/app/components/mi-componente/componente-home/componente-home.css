@@ -23,7 +23,11 @@ button{
     color: #0B1C4C;
     padding: 10px;
     border-radius: 8px;
+    width: 270px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2{
@@ -51,4 +55,12 @@ h1{
     font-family: 'Coiny', system-ui;
     color: #0B1C4C;
     margin-top: 340px;
+}
+
+.icono {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 7px;
+  image-rendering: pixelated; /* 🔥 mantiene efecto retro */
+  filter: drop-shadow(0 0 6px #00ffff);
 }

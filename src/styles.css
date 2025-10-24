@@ -7,7 +7,6 @@ html, body, app-root {
     overflow-y: hidden;
 }
 
-
 body{
     background-image: url('/assets/fondo.png');
     background-size: cover;
@@ -15,3 +14,21 @@ body{
     background-repeat: no-repeat;
     background-position: center center;
 }
+
+.fondo-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/assets/fondo.png') center/cover no-repeat fixed;
+  filter: blur(2px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+app-root {
+  position: relative;
+  z-index: 1;
+}
+

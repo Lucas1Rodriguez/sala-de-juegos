@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+import { ResultadosService } from '../../../../services/resultados';
+import { Supabase } from '../../../../services/supabase';
 
 @Component({
   selector: 'app-bolita',
@@ -16,13 +17,27 @@ export class ComponenteBolita {
   eleccion: number | null = null;
   cartas: any[] = [];
   reyIndex = 0;
-
+  usuario: any = null;
+  nombreUsuario: string | null = null;
   animando = false;
   animaciones: string[] = ['normal', 'normal', 'normal'];
   mostrarCartas = true;
 
   palos = ['hearts', 'spades', 'clubs', 'diamonds'];
   numeros = ['2','3','4','5','6','7','8','9','0','J','Q', 'A'];
+
+  constructor(private resultadosService: ResultadosService, private supabaseService: Supabase){}
+
+  async ngOnInit(){
+    const sesion = await this.supabaseService.getSession();
+    if (sesion?.user) {
+      this.usuario = sesion.user;
+    }
+    const perfil = await this.supabaseService.obtenerPerfil(this.usuario.id);
+      if (perfil) {
+        this.nombreUsuario = perfil;
+      }
+  }
 
   iniciarJuego() {
     this.jugando = true;
@@ -40,9 +55,7 @@ export class ComponenteBolita {
     const cartasTemp: any[] = [];
     this.reyIndex = Math.floor(Math.random() * 3);
 
-    this.cartas = cartasTemp;
-    this.mostrarCartas = true;
-
+    
     for (let i = 0; i < 3; i++) {
       if (i === this.reyIndex) {
         cartasTemp.push({ nombre: 'K', palo: this.palos[Math.floor(Math.random() * this.palos.length)], esRey: true });
@@ -50,14 +63,14 @@ export class ComponenteBolita {
         cartasTemp.push({ nombre: this.numeros[Math.floor(Math.random() * this.numeros.length)], palo: this.palos[Math.floor(Math.random() * this.palos.length)], esRey: false });
       }
     }
+    
+    this.cartas = cartasTemp;
+    this.mostrarCartas = true;
 
     setTimeout(() => {
       this.mostrarCartas = false;
       this.mensaje = 'Mezclando las cartas';
       this.animaciones = ['mezclando', 'mezclando', 'mezclando'];
-
-      this.reyIndex = Math.floor(Math.random() * 3);
-
 
       setTimeout(() => {
         this.animaciones = ['normal', 'normal', 'normal'];
@@ -87,40 +100,10 @@ export class ComponenteBolita {
     }
   }
 
-  finalizarJuego() {
+  async finalizarJuego() {
     this.jugando = false;
     this.mensaje = `Fin del juego. Puntos: ${this.puntos}`;
-  }
-
-  getImagenCarta(carta: any): string {
-    if (!carta) return '';
-
-    console.log(this.cartas,carta);
-
-    let valor = carta.valor === '10' ? '0' : carta.valor;
-
-    let paloLetra = '';
-    switch (carta.palo) {
-      case 'hearts':
-        paloLetra = 'H';
-        break;
-      case 'spades':
-        paloLetra = 'S';
-        break;
-      case 'clubs':
-        paloLetra = 'C';
-        break;
-      case 'diamonds':
-        paloLetra = 'D';
-        break;
-      default:
-        paloLetra = 'H';
-    }
-    const url = `https://deckofcardsapi.com/static/img/${valor}${paloLetra}.png`;
-
-    console.log('URL carta:', url);
-
-    return url;
+    await this.resultadosService.guardarResultados(this.nombreUsuario, 'Bolita', this.puntos);
   }
 
   getOffset() {

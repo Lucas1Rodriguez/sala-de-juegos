@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.tabla{
+    padding: 40px;
+    margin: 120px auto;
+    width: 90%;
+    border-collapse: collapse;
+    background: #2aebff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+.tabla-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.tabla th {
+  background-color: #0B1C4C;
+  color: lightcoral;
+  text-align: left;
+  padding: 12px;
+}
+
+.tabla td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #0B1C4C;
+}
+
+.tabla tr:hover {
+  background-color: #26cbdd;
+}

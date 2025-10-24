@@ -42,7 +42,8 @@ export class Supabase {
     async obtenerPerfil(id: string) {
         const { data, error } = await this.supabase
             .from('Perfiles')
-            .select('usuario')
+            .select('usuario,rol')
+            
             .eq('id', id)
             .single();
 
@@ -53,6 +54,21 @@ export class Supabase {
         console.log('Perfil obtenido:', data);
         return data?.usuario ?? null;   
 
+    }
+
+    async obtenerRol(id: string) {
+        const { data, error } = await this.supabase
+            .from('Perfiles')
+            .select('rol')
+            .eq('id', id)
+            .single();
+
+        if (error) {
+            console.error('Error al obtener rol:', error.message);
+            return null;
+        }
+
+        return data?.rol ?? null;
     }
 
     async getSession() {

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+.ahorcado {
+  text-align: center;
+  margin-top: 77px;
+}
+
+.botones{
+  font-family: 'Press Start 2P', system-ui;
+  font-weight: bold;
+  background: #FACC15;
+  color: #0B1C4C;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ahorcado-dibujo {
+  width: 200px;
+  height: 250px;
+  margin-bottom: 10px;
+}
+
+.base, .poste {
+  stroke: #00ffff;
+  stroke-width: 4;
+}
+
+.parte {
+  stroke: #ff00ff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px #ff00ff);
+  transition: opacity 0.3s ease-in;
+}
+
+h2,p{
+  color: lightblue;
+  font-weight: bold;
+  height: 40px;
+  font-family: 'Press Start 2P', system-ui;
+}
+
+.palabra {
+  font-size: 40px;
+  letter-spacing: 8px;
+  color: red;
+}
+.teclado {
+  margin-top: 20px;
+  
+}
+.teclado button {
+  border: 1px solid black;
+  color: #0B1C4C;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 10px;
+  font-size: 20px;
+}
+

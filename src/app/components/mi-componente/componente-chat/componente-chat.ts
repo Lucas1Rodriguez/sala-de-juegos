@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Chat } from '../../../services/chat';
 import { Supabase } from '../../../services/supabase';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-componente-chat',
-  imports: [CommonModule, FormsModule, DatePipe],
+  imports: [CommonModule, FormsModule],
   templateUrl: './componente-chat.html',
   styleUrl: './componente-chat.css'
 })
@@ -16,7 +15,7 @@ export class ComponenteChat implements OnInit {
   mensaje: string = '';
   mensajes: any[] = [];
   nuevoMensaje = '';
-  nombreUsuario: string | null = null;
+  nombreUsuario: string = '';
   usuario: any = null;
 
   constructor(private chat: Chat, private supabase: Supabase) {}
@@ -32,13 +31,20 @@ export class ComponenteChat implements OnInit {
         this.nombreUsuario = perfil;
       }
 
-    this.chat.cargarMensajes()
+    this.mensajes = await this.chat.cargarMensajes();
+
+    const supabase = this.supabase.getCliente();
+    supabase
+      .channel('chat-room')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'Chat' }, payload => {
+        this.mensajes.push(payload.new);
+      })
+      .subscribe();
   }
 
   enviar() {
-   if (this.nuevoMensaje.trim() === '') return;
-    this.chat.enviarMensaje(this.nuevoMensaje, this.usuario);
-    this.nuevoMensaje = '';
+    if (this.mensaje.trim() === '') return;
+    this.chat.enviarMensaje(this.mensaje, this.nombreUsuario);
     this.mensaje = '';
   }
 }

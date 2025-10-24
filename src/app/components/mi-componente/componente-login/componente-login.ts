@@ -56,7 +56,13 @@ export class ComponenteLogin {
 
   harcodeoCorreo()
   {
-    this.correo = "usuarioPrueba@mail.com";
+    this.correo = "usuarioPrueba16@mail.com";
+    this.contrasena = "contrasena123";
+  }
+
+  harcodeoAdmin()
+  {
+    this.correo = "usuarioPrueba222@mail.com";
     this.contrasena = "contrasena123";
   }
 

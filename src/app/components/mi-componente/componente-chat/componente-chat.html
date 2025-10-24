@@ -1,15 +1,17 @@
-<div class="chat-container">
+<div class="chat-container" #chatContainer>
   <div
     *ngFor="let msg of mensajes"
     class="mensaje"
-    [class.propio]="msg.usuarioNombre === nombreUsuario">
-        <div class="mensaje-header">
-        <strong>{{ msg.usuario }}</strong>
-        <small>{{ msg.created_at | date:'shortTime' }}</small>
-        </div>
-        <div class="mensaje-content">
-        {{ msg.mensaje }}
-        </div>
+    [class.propio]="msg.usuario === nombreUsuario">
+    
+    <div class="mensaje-header">
+      <strong>{{ msg.usuario }}</strong>
+      <small>{{ msg.created_at | date:'shortTime' }}</small>
+    </div>
+
+    <div class="mensaje-content">
+      {{ msg.mensaje }}
+    </div>
   </div>
 </div>
 

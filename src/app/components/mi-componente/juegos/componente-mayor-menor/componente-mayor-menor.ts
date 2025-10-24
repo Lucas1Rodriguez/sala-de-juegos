@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ResultadosService } from '../../../../services/resultados';
+import { Supabase } from '../../../../services/supabase';
 
 @Component({
   selector: 'app-componente-mayor-menor',
@@ -19,6 +21,21 @@ export class ComponenteMayorMenor {
   vidas = 3;
   mensaje = '';
   jugando = false;
+  usuario: any = null;
+  nombreUsuario: string | null = null;
+
+  constructor(private resultadosService: ResultadosService, private supabaseService: Supabase){}
+
+  async ngOnInit(){
+    const sesion = await this.supabaseService.getSession();
+    if (sesion?.user) {
+      this.usuario = sesion.user;
+    }
+    const perfil = await this.supabaseService.obtenerPerfil(this.usuario.id);
+      if (perfil) {
+        this.nombreUsuario = perfil;
+      }
+  }
 
   iniciarJuego() {
     this.puntos = 0;
@@ -85,9 +102,10 @@ export class ComponenteMayorMenor {
     this.cartaActual = this.cartaNueva;
   }
 
-  finalizarJuego() {
+  async finalizarJuego() {
     this.jugando = false;
     this.mensaje = `Juego terminado. Puntos: ${this.puntos}`;
+    await this.resultadosService.guardarResultados(this.nombreUsuario, 'Mayor o Menor', this.puntos);
   }
 }
 

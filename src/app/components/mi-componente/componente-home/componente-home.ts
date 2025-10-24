@@ -28,18 +28,22 @@ export class ComponenteHome implements OnInit {
   }
   
   juegoAhorcado(){
-    this.router.navigateByUrl("/ahorcado");
+    this.router.navigateByUrl("juegos/ahorcado");
   }
 
   juegoBolita(){
-    this.router.navigateByUrl("/bolita");
+    this.router.navigateByUrl("juegos/bolita");
   }
 
   juegoMayorMenor(){
-    this.router.navigateByUrl("/mayorMenor");
+    this.router.navigateByUrl("juegos/mayorMenor");
   }
 
   chat(){
     this.router.navigateByUrl("/chat");
+  }
+
+  resultadoEncuesta(){
+    this.router.navigateByUrl("/resultadosJuegos");
   }
 }

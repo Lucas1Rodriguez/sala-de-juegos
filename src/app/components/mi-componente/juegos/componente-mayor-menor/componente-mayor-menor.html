@@ -1,5 +1,7 @@
 <div class="mayor-menor-container">
   <h2>🃏 Juego: Mayor o Menor</h2>
+  
+  <p>{{ mensaje }}</p>
 
   <div *ngIf="!jugando" class="inicio">
     <button (click)="iniciarJuego()">Jugar</button>
@@ -7,7 +9,6 @@
 
   <div *ngIf="jugando">
     <p>Vidas: ❤️ x{{ vidas }} | Puntos: {{ puntos }}</p>
-    <p>{{ mensaje }}</p>
 
     <div class="cartas">
       <div class="carta">

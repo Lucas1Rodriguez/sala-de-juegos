@@ -3,10 +3,11 @@ import { ComponenteHome } from './components/mi-componente/componente-home/compo
 import { ComponenteLogin } from './components/mi-componente/componente-login/componente-login';
 import { ComponenteQuienSoy } from './components/mi-componente/componente-quien-soy/componente-quien-soy';
 import { ComponenteRegistrar } from './components/mi-componente/componente-registrar/componente-registrar';
-import { ComponenteAhorcado } from './components/mi-componente/componente-ahorcado/componente-ahorcado';
 import { ComponenteChat } from './components/mi-componente/componente-chat/componente-chat';
-import { ComponenteBolita } from './components/mi-componente/componente-bolita/componente-bolita';
-import { ComponenteMayorMenor } from './components/mi-componente/componente-mayor-menor/componente-mayor-menor';
+import { ComponenteEncuesta } from './components/mi-componente/componente-encuesta/componente-encuesta';
+import { ComponenteResultadosEncuesta } from './components/mi-componente/componente-resultados-encuesta/componente-resultados-encuesta';
+import { adminGuard } from './guards/admin-guard';
+import { ComponenteResultadosJuegos } from './components/mi-componente/componente-resultados-juegos/componente-resultados-juegos';
 
 export const routes: Routes = [
 
@@ -32,20 +33,25 @@ export const routes: Routes = [
         component: ComponenteRegistrar
     },
     {
-        path: "ahorcado",
-        component: ComponenteAhorcado
-    },
-    {
-        path: "bolita",
-        component: ComponenteBolita
-    },
-    {
-        path: "mayorMenor",
-        component: ComponenteMayorMenor
+        path: "juegos",
+        loadChildren: () => import('./components/mi-componente/juegos/juego-module').then(m => m.JuegoModule)
     },
     {
         path: "chat",
         component: ComponenteChat
+    },
+    {
+        path: "encuesta",
+        component: ComponenteEncuesta
+    },
+    {
+        path: "resultadosEncuesta",
+        component: ComponenteResultadosEncuesta, 
+        canActivate: [adminGuard]
+    },
+    {
+        path: "resultadosJuegos",
+        component: ComponenteResultadosJuegos
     },
     {
         path: "**",

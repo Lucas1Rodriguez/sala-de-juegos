@@ -1,0 +1,30 @@
+<div >
+  <div class="filtrar">
+    <label>Filtrar por juego:</label>
+    <select id="juego" (change)="onJuegoChange($event)">
+      <option value="">Todos</option>
+      <option *ngFor="let juego of juegos" [value]="juego">{{ juego }}</option>
+    </select>
+  </div>
+
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Juego</th>
+        <th (click)="ordenarPorPuntaje()">
+          Puntaje
+        </th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of resultados">
+        <td>{{ r.usuario }}</td>
+        <td>{{ r.juego }}</td>
+        <td>{{ r.puntaje }}</td>
+        <td>{{ r.created_at | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
